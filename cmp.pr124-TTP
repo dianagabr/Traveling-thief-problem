@@ -1,0 +1,235 @@
+ACO algorithms for the TTP
+Parameter-settings: 
+
+
+max_tries		 30
+max_tours		 0
+max_time		 100.0
+Utilities.seed		 -1181226530
+optimum			 1
+n_ants			 25
+Ants.nn_ants		 20
+Ants.alpha		 1.0
+Ants.beta		 2.0
+Ants.rho		 0.5
+Ants.q_0		 0.0
+Ants.elitist_ants	 0
+Ants.ras_ranks		 0
+LocalSearch.ls_flag	 3
+LocalSearch.nn_ls	 20
+LocalSearch.dlb_flag	 true
+Ants.as_flag		 false
+Ants.eAnts.as_flag	 false
+rAnts.as_flag		 false
+mmAnts.as_flag		 true
+Ants.bwAnts.as_flag	 false
+Ants.acs_flag		 false
+
+
+begin problem null
+Utilities.seed -1181226530
+begin try 0
+best 118170.27214613222	 iteration 1	 tours 27	 time 9.012
+best 119966.60035079945	 iteration 8	 tours 202	 time 78.765
+end try 0
+
+Utilities.seed -1181226530
+begin try 1
+best 118759.76773318	 iteration 1	 tours 27	 time 9.257
+best 118986.56413196109	 iteration 5	 tours 127	 time 43.934
+end try 1
+
+Utilities.seed -1181226530
+begin try 2
+best 118625.01636861375	 iteration 1	 tours 27	 time 5.458
+end try 2
+
+Utilities.seed -1181226530
+begin try 3
+best 107440.2163752015	 iteration 1	 tours 27	 time 5.462
+end try 3
+
+Utilities.seed -1181226530
+begin try 4
+best 88734.68896818359	 iteration 1	 tours 27	 time 5.48
+best 95464.31473658292	 iteration 2	 tours 52	 time 11.042
+best 111626.14286543496	 iteration 3	 tours 77	 time 17.069
+end try 4
+
+Utilities.seed -1181226530
+begin try 5
+best 119514.59768773566	 iteration 1	 tours 27	 time 5.554
+end try 5
+
+Utilities.seed -1181226530
+begin try 6
+best 85001.19315729386	 iteration 1	 tours 27	 time 5.441
+best 112016.2020550058	 iteration 2	 tours 52	 time 11.094
+best 119973.3510943586	 iteration 7	 tours 177	 time 42.504
+end try 6
+
+Utilities.seed -1181226530
+begin try 7
+best 69930.93576233703	 iteration 1	 tours 27	 time 5.717
+best 110777.5692809805	 iteration 2	 tours 52	 time 11.865
+best 114116.34411451468	 iteration 5	 tours 127	 time 30.549
+end try 7
+
+Utilities.seed -1181226530
+begin try 8
+best 115065.087506093	 iteration 1	 tours 27	 time 5.295
+best 115566.11693931493	 iteration 2	 tours 52	 time 11.207
+end try 8
+
+Utilities.seed -1181226530
+begin try 9
+best 103374.14737543694	 iteration 1	 tours 27	 time 5.943
+best 112353.77238149705	 iteration 3	 tours 77	 time 17.442
+best 117238.4083239995	 iteration 5	 tours 127	 time 29.666
+end try 9
+
+Utilities.seed -1181226530
+begin try 10
+best 114252.30284308465	 iteration 1	 tours 27	 time 5.659
+best 120423.46294993386	 iteration 4	 tours 102	 time 23.24
+end try 10
+
+Utilities.seed -1181226530
+begin try 11
+best 107178.80621502639	 iteration 1	 tours 27	 time 5.563
+best 117927.18356831901	 iteration 2	 tours 52	 time 11.529
+best 118346.07321445664	 iteration 5	 tours 127	 time 29.405
+best 120066.20345294283	 iteration 15	 tours 377	 time 91.295
+end try 11
+
+Utilities.seed -1181226530
+begin try 12
+best 79256.58953835996	 iteration 1	 tours 27	 time 5.538
+best 98207.01548502437	 iteration 2	 tours 52	 time 11.321
+best 106894.5089148214	 iteration 4	 tours 102	 time 23.235
+best 111083.12138564346	 iteration 11	 tours 277	 time 66.84
+best 116801.14534749725	 iteration 12	 tours 302	 time 73.098
+end try 12
+
+Utilities.seed -1181226530
+begin try 13
+best 77516.89939554763	 iteration 1	 tours 27	 time 5.569
+best 84453.98315899711	 iteration 2	 tours 52	 time 11.232
+best 98671.90262018057	 iteration 3	 tours 77	 time 17.468
+best 119443.73512402005	 iteration 4	 tours 102	 time 23.561
+end try 13
+
+Utilities.seed -1181226530
+begin try 14
+best 96188.58688625286	 iteration 1	 tours 27	 time 6.066
+best 118935.94142519822	 iteration 2	 tours 52	 time 12.055
+end try 14
+
+Utilities.seed -1181226530
+begin try 15
+best 95384.01804168802	 iteration 1	 tours 27	 time 5.663
+best 113191.70839692096	 iteration 3	 tours 77	 time 17.004
+best 118559.3164548201	 iteration 5	 tours 127	 time 29.074
+end try 15
+
+Utilities.seed -1181226530
+begin try 16
+best 110644.43109249769	 iteration 1	 tours 27	 time 5.594
+best 117926.06082514903	 iteration 3	 tours 77	 time 17.145
+end try 16
+
+Utilities.seed -1181226530
+begin try 17
+best 115963.45456268612	 iteration 1	 tours 27	 time 5.711
+best 118838.05163973421	 iteration 5	 tours 127	 time 29.11
+best 120134.69347909189	 iteration 9	 tours 227	 time 53.789
+end try 17
+
+Utilities.seed -1181226530
+begin try 18
+best 73374.1102994495	 iteration 1	 tours 27	 time 6.183
+best 105523.11987960205	 iteration 2	 tours 52	 time 12.492
+best 118938.69898494918	 iteration 5	 tours 127	 time 34.369
+end try 18
+
+Utilities.seed -1181226530
+begin try 19
+best 100602.32821220934	 iteration 1	 tours 27	 time 5.834
+best 105924.5192330849	 iteration 3	 tours 77	 time 17.572
+best 106783.9223712901	 iteration 5	 tours 127	 time 29.675
+best 109630.67799436135	 iteration 7	 tours 177	 time 41.943
+end try 19
+
+Utilities.seed -1181226530
+begin try 20
+best 106712.01604217384	 iteration 1	 tours 27	 time 5.502
+best 111531.90693650313	 iteration 5	 tours 127	 time 29.45
+best 120664.94387322394	 iteration 17	 tours 427	 time 105.128
+end try 20
+
+Utilities.seed -1181226530
+begin try 21
+best 119157.03284181538	 iteration 1	 tours 27	 time 5.73
+best 120492.38289583215	 iteration 16	 tours 402	 time 98.832
+end try 21
+
+Utilities.seed -1181226530
+begin try 22
+best 107242.88859142637	 iteration 1	 tours 27	 time 5.47
+best 108568.76894230783	 iteration 3	 tours 77	 time 16.702
+best 114296.96986275568	 iteration 9	 tours 227	 time 53.811
+end try 22
+
+Utilities.seed -1181226530
+begin try 23
+best 75372.75689753439	 iteration 1	 tours 27	 time 5.561
+best 96024.65142244846	 iteration 2	 tours 52	 time 11.217
+best 119075.25181471344	 iteration 3	 tours 77	 time 17.177
+end try 23
+
+Utilities.seed -1181226530
+begin try 24
+best 99859.91433985595	 iteration 1	 tours 27	 time 5.56
+best 105672.96641555871	 iteration 2	 tours 52	 time 11.171
+best 110378.27740502253	 iteration 5	 tours 127	 time 29.173
+best 110644.27665268301	 iteration 8	 tours 202	 time 47.997
+best 113465.48156445625	 iteration 10	 tours 252	 time 60.39
+best 118900.40234984184	 iteration 13	 tours 327	 time 79.111
+end try 24
+
+Utilities.seed -1181226530
+begin try 25
+best 90161.76134106779	 iteration 1	 tours 27	 time 5.649
+best 101942.13097240849	 iteration 2	 tours 52	 time 11.357
+best 117752.26867264736	 iteration 4	 tours 102	 time 23.092
+best 121451.7013724983	 iteration 16	 tours 402	 time 98.025
+end try 25
+
+Utilities.seed -1181226530
+begin try 26
+best 102704.64263522017	 iteration 1	 tours 27	 time 5.392
+best 104427.82869694181	 iteration 3	 tours 77	 time 16.823
+best 109785.84656674572	 iteration 4	 tours 102	 time 22.944
+best 119471.08380263048	 iteration 6	 tours 152	 time 35.302
+best 119607.67470358513	 iteration 15	 tours 377	 time 91.495
+end try 26
+
+Utilities.seed -1181226530
+begin try 27
+best 89217.1550008604	 iteration 1	 tours 27	 time 5.382
+best 114727.26875569229	 iteration 2	 tours 52	 time 11.04
+end try 27
+
+Utilities.seed -1181226530
+begin try 28
+best 118052.95590004977	 iteration 1	 tours 27	 time 5.416
+end try 28
+
+Utilities.seed -1181226530
+begin try 29
+best 93920.40430579911	 iteration 1	 tours 27	 time 5.411
+best 96588.06721943346	 iteration 2	 tours 52	 time 10.952
+best 117601.27248424839	 iteration 4	 tours 102	 time 22.749
+end try 29
+
+end problem pr124-TTP
