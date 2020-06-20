@@ -128,8 +128,9 @@ public class AcoTsp {
         for( k = 0 ; k < Ants.n_ants; k++){
             if(!Ttp.tourObjValue.containsKey(Ants.ant[k].tour)){
 
-                Ants.ant[k].picking_plan = Kp.packIterative(Ants.ant[k].tour, Kp.c, Kp.q, Kp.delta);
-                Ants.ant[k].score = Ttp.calculateObjectiveValue(Ants.ant[k].tour, Ants.ant[k].picking_plan);
+               // Ants.ant[k].picking_plan = Kp.packIterative(Ants.ant[k].tour, Kp.c, Kp.q, Kp.delta);
+                Ants.ant[k].picking_plan = Kp.pack_evolutiv(Ants.ant[k].tour);
+                Ants.ant[k].score = Ttp.calculate_objective_value(Ants.ant[k].tour, Ants.ant[k].picking_plan);
                 Ttp.tourObjValue.put(Ants.ant[k].tour,Ants.ant[k].score );
 
             }
@@ -203,7 +204,14 @@ public class AcoTsp {
             InOut.printToFile(InOut.stat_report, "begin try " + ntry);
     }
 
-    static void boosting(){
+    static void boosting()
+    /***
+     * manage the boosting phase; applies the ea algorithm for 1000 iterations
+     * one step of insertion
+     * one step of bitflip
+     * ants tour and picking plan modified
+     */
+    {
 
         int k;
         int[] picking_plan = new int[Kp.m];
@@ -211,15 +219,15 @@ public class AcoTsp {
         if(Ttp.BOOST){
             for(k= 0; k < Ants.n_ants; k++){
                 picking_plan  = LocalSearch.EA(1000, Ants.ant[k].tour);
-                double obj_value = Ttp.calculateObjectiveValue(Ants.ant[k].tour, picking_plan);
+                double obj_value = Ttp.calculate_objective_value(Ants.ant[k].tour, picking_plan);
                 if( obj_value > Ants.ant[k].score) {
                     Ants.ant[k].picking_plan = picking_plan.clone();
                     Ants.ant[k].score = obj_value;
                 }
                 Ants.ant[k].tour = LocalSearch.insertion(Ants.ant[k].tour, Ants.ant[k].picking_plan);
-                Ants.ant[k].score = Ttp.calculateObjectiveValue(Ants.ant[k].tour, Ants.ant[k].picking_plan);
+                Ants.ant[k].score = Ttp.calculate_objective_value(Ants.ant[k].tour, Ants.ant[k].picking_plan);
                 Ants.ant[k].picking_plan = LocalSearch.bitflip(Ants.ant[k].tour, Ants.ant[k].picking_plan);
-                Ants.ant[k].score = Ttp.calculateObjectiveValue(Ants.ant[k].tour, Ants.ant[k].picking_plan);
+                Ants.ant[k].score = Ttp.calculate_objective_value(Ants.ant[k].tour, Ants.ant[k].picking_plan);
             }
         }
 

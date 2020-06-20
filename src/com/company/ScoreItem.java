@@ -1,5 +1,8 @@
 package com.company;
 
+/***
+ * Class used in score function for storing data about objects: score, city index, object index
+ */
 public class ScoreItem {
 
     private int city;

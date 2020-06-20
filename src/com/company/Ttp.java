@@ -26,7 +26,11 @@ public class Ttp {
 
 
 
-    public static int get_weight_in_city(int[] picking_plan, int city){
+    public static int get_weight_in_city(int[] picking_plan, int city)
+    /***
+     * return the weight of the picked items in the given city
+     */
+    {
 
         int index;
 
@@ -41,12 +45,12 @@ public class Ttp {
         return currentWeight;
     }
 
-    public static double calculateObjectiveValue(int[] tour, int[] pickingPlan)
+    public static double calculate_objective_value(int[] tour, int[] pickingPlan)
     /**
      * calculate objective value
      */
     {
-        double objectiveValue = Kp.getTotalProfit(pickingPlan, Kp.profits, Kp.m );
+        double objectiveValue = Kp.get_total_profit(pickingPlan, Kp.profits, Kp.m );
         int currentWeight = 0;
         int first_city_weight = 0;
         double sum = 0;
@@ -65,7 +69,11 @@ public class Ttp {
         return objectiveValue;
     }
 
-    public void compute_speed(){
+    public void compute_speed()
+    /***
+     * compute speed
+     */
+    {
 
         SPEED = (MAXIMUM_SPEED-MINIMUM_SPEED)/Kp.W;
 
@@ -74,7 +82,7 @@ public class Ttp {
 
     static void compute_score(int[] tour, int[] pickingPlan){
 
-        tourObjValue.putIfAbsent(tour, calculateObjectiveValue(tour,pickingPlan));
+        tourObjValue.putIfAbsent(tour, calculate_objective_value(tour,pickingPlan));
     }
 
 

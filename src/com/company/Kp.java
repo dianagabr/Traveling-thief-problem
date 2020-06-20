@@ -15,17 +15,18 @@ public class Kp {
     static int W; // knapsack total weight
     static int[] pickingPlan; //contains the solution for the knapsack sub-problem
     static int[] availability ; // availability of each item]
-    static final int c = 5; //constant used for packIterative
-    static final double delta = 2.5;
-    static final int q = 10;
+    static final int c = 5; //constant used for pack_iterative
+    static final double delta = 2.5; //constant used for pack_iterative
+    static final int q = 10; // constant used for pack_iterative
 
 
 
+
+    public double get_total_profit()
     /**
-     *
-     * @return the total profit of the picking plan
+     * return the total profit of the picking plan
      */
-    public double getTotalProfit(){
+    {
         double profit = 0;
 
         for(int i = 0; i< m ; i++){
@@ -35,13 +36,12 @@ public class Kp {
         return profit;
     }
 
+
+    public static int calculate_distance(int[] tour, int city)
     /**
-     *
-     * @param tour
-     * @param city
-     * @return the distance from city where an item k was selected to the end of the given tour
+     * return the distance from city where an item k was selected to the end of the given tour
      */
-    public static int calculate_distance(int[] tour, int city){
+    {
 
         int distance = 0;
         int index = Tsp.get_index_city(tour, city);
@@ -53,12 +53,9 @@ public class Kp {
     }
 
     /**
-     *
-     * @param tour
-     * @param alpha
-     * @return the score for each object according to the formula using in PACKITERATIVE
+     * return the score for each object according to the formula using in PACKITERATIVE
      */
-    public static List<ScoreItem> compute_score(int[] tour, double alpha){
+    public static List<ScoreItem> compute_score(int[] tour, double alpha, double beta){
 
         List<ScoreItem> scoreList = new ArrayList<>();
         int i;
@@ -66,7 +63,7 @@ public class Kp {
         for( i = 0 ; i< m; i++){
             if(availability[i] != -1){
                 int distance = calculate_distance(tour,availability[i]);
-                double score  =(double) (Math.pow(profits[i], alpha))/(Math.pow(weights[i], alpha) * distance );
+                double score  =(double) (Math.pow(profits[i], alpha))/(Math.pow(weights[i], beta) * distance );
                 scoreList.add(new ScoreItem(availability[i],i,score));
             }
 
@@ -77,7 +74,11 @@ public class Kp {
 
     }
 
-    public static int getCurrentWeightInPickingPlan(int[] pickingPlan, int k , List<ScoreItem> score){
+    public static int get_current_weight_in_picking_plan(int[] pickingPlan, int k , List<ScoreItem> score)
+    /***
+     * obtain the total weight of the constructed picking plan
+      */
+    {
 
         int currentWeight = 0 ;
         for(int i = 0; i < k; i++){
@@ -89,7 +90,7 @@ public class Kp {
     }
 
 
-    public static double getTotalProfit(int[] pickingPlan, int[] profits, int m)
+    public static double get_total_profit(int[] pickingPlan, int[] profits, int m)
     /**
      * compute total profit of a given picking plan
      */
@@ -103,7 +104,7 @@ public class Kp {
         return profit;
     }
 
-    public static int getTotalWeight(int[] pickingPlan)
+    public static int get_total_weight(int[] pickingPlan)
     /**
      * compute total weight of a given picking plan
      */
@@ -118,7 +119,11 @@ public class Kp {
     }
 
 
-    static boolean check_if_empty(int[] pickingPlan){
+    static boolean check_if_empty(int[] pickingPlan)
+    /***
+     * verify if a picking plan is empty
+     */
+    {
 
         for(int i = 0 ; i< pickingPlan.length; i++){
             if(pickingPlan[i] != 0){
@@ -128,8 +133,12 @@ public class Kp {
         return true;
     }
 
-    public static int[] pack(int[] tour, double alpha) {
-        List<ScoreItem> score = compute_score(tour, alpha); //score list for each item
+    public static int[] pack(int[] tour, double alpha, double beta)
+    /***
+     *  algorithm used for constructing packing plan
+     */
+    {
+        List<ScoreItem> score = compute_score(tour, alpha, beta); //score list for each item
         score.sort(Comparator.comparing(ScoreItem::getScore).reversed()); //sort the items in non-decreasing order of their score
         int frequency = 3; //(int) Math.floor(m/alpha); //  controls the frequency of the objective value recomputation
         int[] packingPlan  = new int[m];
@@ -150,7 +159,7 @@ public class Kp {
                         packingPlan = bestPackingPlan.clone();
                         k = k_best;
                         frequency = frequency /2 ;
-                        currentWeight = getCurrentWeightInPickingPlan(packingPlan, k, score);
+                        currentWeight = get_current_weight_in_picking_plan(packingPlan, k, score);
                     }
                     else{
                         bestPackingPlan = packingPlan.clone();
@@ -166,18 +175,38 @@ public class Kp {
         return packingPlan;
     }
 
-    public static int[] packIterative(int[] tour, int c, int q, double delta){
+    public static int[] pack_evolutiv(int[] tour)
+    /***
+     * method proposed for solving the packing routine
+     * this method uses Differential Evolution to calculate the exponents
+     * alpha and beta for PACK
+     * return the packing plan for the given tour
+     */
+    {
+        DifferentialEvolution differentialEvolution = new DifferentialEvolution(tour);
+        double[] values = differentialEvolution.run();
+        double alpha = values[0];
+        double beta = values[1];
+        int[] picking_plan = pack(tour, alpha, beta);
+        return picking_plan;
+    }
+
+    public static int[] pack_iterative(int[] tour, int c, int q, double delta)
+    /***
+     * method proposed in article for solving the picking plan
+      */
+    {
 
         double epsilon = 0.1;
-        int[] pickingPlanLeft = pack(tour, c-delta);
+        int[] pickingPlanLeft = pack(tour, c-delta,c + delta );
         double objValueLeft = Ttp.calculateObjectiveValue(tour, pickingPlanLeft);
 
 
-        int[] pickingPlanMid = pack(tour, c);
+        int[] pickingPlanMid = pack(tour, c, c);
         double objValueMid = Ttp.calculateObjectiveValue(tour, pickingPlanMid);
 
 
-        int[] pickingPlanRight = pack(tour, c + delta);
+        int[] pickingPlanRight = pack(tour, c + delta,c + delta);
         double objValueRight = Ttp.calculateObjectiveValue(tour, pickingPlanRight);
 
 
@@ -207,10 +236,10 @@ public class Kp {
               }
               delta = delta/2;
 
-              pickingPlanLeft = pack(tour, c- delta);
+              pickingPlanLeft = pack(tour, c- delta, c-delta);
               objValueLeft = Ttp.calculateObjectiveValue(tour, pickingPlanLeft);
 
-              pickingPlanRight = pack(tour, c + delta);
+              pickingPlanRight = pack(tour, c + delta,c + delta);
               objValueRight = Ttp.calculateObjectiveValue(tour, pickingPlanRight);
               i++;
 
@@ -219,7 +248,7 @@ public class Kp {
               }
 
         }
-        return bestPickingPlan;
+          return bestPickingPlan;
     }
 }
 

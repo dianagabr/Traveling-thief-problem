@@ -517,8 +517,8 @@ public class InOut {
         Ants.beta = 2.0;
         Ants.rho = 0.5;
         Ants.q_0 = 0.0;
-        max_tries = 30;
-        max_tours = 0;
+        max_tries = 10;
+        max_tours = 100;
         Utilities.seed = (int) System.currentTimeMillis();
         max_time = 100.0;
         optimal = 1;
@@ -741,7 +741,7 @@ public class InOut {
         }
 
         if(report_solution != null) {
-            String[] values = {Double.toString(best_score),Double.toString(worst_score), Double.toString(best_tour_length), Double.toString(worst_tour_length),
+            String[] values = {Double.toString(best_score), Double.toString(stddev_best), Double.toString(worst_score), Double.toString(best_tour_length), Double.toString(worst_tour_length),
                     Double.toString(avg_sol_quality), Double.toString(avg_cyc_to_bst), Double.toString(t_avgbest), Double.toString(t_stdbest), Double.toString(t_avgtotal), Double.toString(t_stdtotal)};
             report_solution_writer.writeNext(values);
         }
@@ -795,7 +795,7 @@ public class InOut {
         // TRACE ( System.out.println("read problem data  ..\n\n"); )
 
         try {
-            read_TTP_instances("D:\\rat195_n582_bounded-strongly-corr_09.ttp");
+            read_TTP_instances("D:\\kroA100_n297_uncorr_05.ttp");
         } catch (IOException e) {
             System.err.println("Could not read input file. " + e.getMessage());
             System.exit(1);
@@ -841,8 +841,8 @@ public class InOut {
                 w = new OutputStreamWriter(new FileOutputStream(temp_buffer), "UTF8");
                 writer.put(stat_report.getName(), new BufferedWriter(w));
 
-                best_report_iteration = new File("D:\\Licenta\\Rapoarte\\" + Ttp.problemName + "_bsc.csv");
-                report_solution = new File("D:\\Licenta\\Rapoarte\\" + Ttp.problemName + "_solution_bsc.csv");
+                best_report_iteration = new File("D:\\Licenta\\Rapoarte\\" + Ttp.problemName + "_uncDE.csv");
+                report_solution = new File("D:\\Licenta\\Rapoarte\\" + Ttp.problemName + "_solution_uncDE.csv");
 
                 FileWriter outputfile = new FileWriter(best_report_iteration);
                 report_iteration_writer = new CSVWriter(outputfile);
@@ -852,7 +852,7 @@ public class InOut {
 
                 FileWriter outputFile = new FileWriter(report_solution);
                 report_solution_writer = new CSVWriter(outputFile);
-                String[] header_report = { "best score", "worst score",  "best length", "worst length", "average best", "average iterations", "avg.time-best", "stddev.time-best", "avg.time-Ants.total", "stddev.time-Ants.total"};
+                String[] header_report = { "best score", "Stddev-Best", "worst score",  "best length", "worst length", "average best", "average iterations", "avg.time-best", "stddev.time-best", "avg.time-Ants.total", "stddev.time-Ants.total"};
                 report_solution_writer.writeNext(header_report);
 
 

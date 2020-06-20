@@ -67,7 +67,11 @@ public class LocalSearch {
      */
 
 
-    static int[] bitflip(int[] tour, int[] pickingPlan ){
+    static int[] bitflip(int[] tour, int[] pickingPlan )
+    /****
+     * implementation of bitflip operator
+     */
+    {
 
         double bestObjValue = Ttp.calculateObjectiveValue(tour,pickingPlan);
         int[] bestPickingPlan = pickingPlan.clone();
@@ -80,7 +84,7 @@ public class LocalSearch {
 
               }
               double objValue = Ttp.calculateObjectiveValue(tour,pickingPlan);
-              double total_weight = Kp.getTotalWeight(pickingPlan);
+              double total_weight = Kp.get_total_weight(pickingPlan);
               if(objValue > bestObjValue && total_weight <= Kp.W){
                   bestObjValue = objValue;
                   bestPickingPlan = pickingPlan.clone();
@@ -92,7 +96,11 @@ public class LocalSearch {
         return bestPickingPlan;
     }
 
-    static int[] insertion(int[] tour, int[] pickingPlan){
+    static int[] insertion(int[] tour, int[] pickingPlan)
+    /***
+     * local search used in booosting routine for improving TTP solution
+      */
+    {
 
         int a, b;
         int[] tour_1 = new int[tour.length];
@@ -120,7 +128,11 @@ public class LocalSearch {
 
     }
 
-    static int[] EA(int numberOfIterations, int[] tour){
+    static int[] EA(int numberOfIterations, int[] tour)
+    /***
+     * local search used for improving the picking plan
+      */
+    {
 
         double probability =1.0 / Kp.m ;
 
@@ -149,7 +161,7 @@ public class LocalSearch {
                     newPickingPlan = pickingPlan.clone();
                     newObjValue = objValue;
                 }
-                if (objValue >= newObjValue && Kp.getTotalWeight(pickingPlan) < Kp.W ) {
+                if (objValue >= newObjValue && Kp.get_total_weight(pickingPlan) <= Kp.W ) {
                     newPickingPlan = pickingPlan.clone();
                     newObjValue = objValue;
                 }
